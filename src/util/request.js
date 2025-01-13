@@ -6,19 +6,23 @@
  * @filePath: Do not edit
  */
 
+
 function request(url, data = {}, method = "POST", header = {}) {
+  console.log('请求路径：',import.meta.env.VITE_BASE_URL + url)
+  console.log('请求参数：',data)
   return new Promise((resolve, reject) => {
     uni.request({
       url: import.meta.env.VITE_BASE_URL + url,
       data: data,
       header: {
+        token:uni.getStorageSync("user").token,
         ...header
       },
       method: method,
     }).then(res => {
-
-      if (Number(res.data.code) === 200) {
-        if (res.data.data == undefined) {
+      console.log('响应结果',res)
+      if (Number(res.data.rtnCode) === 0) {
+        if (res.data == undefined) {
           resolve(res.data)
           return
         }
@@ -27,7 +31,7 @@ function request(url, data = {}, method = "POST", header = {}) {
         reject(res.data)
       }
     }).catch(err => {
-      console.log('err', err)
+      console.log('响应失败结果',err)
 
       uni.showToast({
         title: '请求失败',

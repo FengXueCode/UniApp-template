@@ -15,7 +15,7 @@ export default defineConfig({
     ],
     //本地目录 
     dirs: [
-
+        "src/util"
     ]
   }),
   Components({
