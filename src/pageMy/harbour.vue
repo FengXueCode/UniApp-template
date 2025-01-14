@@ -47,7 +47,7 @@
       <div class="btn" @click="add">新增船员</div>
     </div>
 
-    <up-popup :show="showAdd" mode="bottom" :round="10" >
+    <up-popup :show="showAdd" mode="bottom" :round="10" :closeOnClickOverlay="true" @close="showAdd = false">
       <div class="popup">
         <div class="popup-head">
           <up-icon crewName="arrow-left" @click="showAdd = false"></up-icon>
@@ -110,15 +110,25 @@
               v-model="harbourForm.crewIdCard"
             ></up-input>
           </up-form-item>
-        <up-form-item label="户籍" prop="crewRegister" labelWidth="80">
-          <up-input
-            placeholder="请输入户籍所在地"
-            type="text"
-            maxlength="10"
-            border="bottom"
-            v-model="harbourForm.crewRegister"
-          ></up-input>
-        </up-form-item>
+        <up-form-item label="户籍" prop="region" labelWidth="80">
+            <picker
+              class="pciker"
+              :value="checkRegion"
+              mode="region"
+              @change="changeRegion"
+            >
+              <div
+                class="select"
+                :class="{ 'no-input': harbourForm.cbAreaVO === '' }"
+                @click="showRegion = true"
+              >
+                <div class="text">
+                  {{ harbourForm.cbAreaVO == "" ? "请选择户籍" : region }}
+                </div>
+                <up-icon name="arrow-right"></up-icon>
+              </div>
+            </picker>
+          </up-form-item>
       <up-form-item label="现居住地址" prop="crewCurrentResidence" labelWidth="80">
           <up-input
             placeholder="请输入现居住地址"
@@ -194,6 +204,13 @@ function remove(item:any){
 //----------------------<xzcy-新增船员>----------------------
 function add(){
   showAdd.value = true
+  harbourForm.value = {
+  crewName:"",
+  crewPhone:"",
+  cbAreaVO:"",
+  crewCurrentResidence:"",
+  cbShipId:""
+}
 }
 
 const showAdd = ref(false)
@@ -201,7 +218,7 @@ const form = ref()
 const harbourForm = ref({
   crewName:"",
   crewPhone:"",
-  crewRegister:"",
+  cbAreaVO:"",
   crewCurrentResidence:"",
   cbShipId:""
 })
@@ -280,6 +297,31 @@ function getList(isMore:boolean = false){
   })
   
 }
+//----------------------<hj-户籍>----------------------
+const region = ref("");
+const checkRegion = ref([])
+function changeRegion(e) {
+ harbourForm.value.cbAreaVO = "";
+  let data = e.detail.value;
+  let code = e.detail.code
+  checkRegion.value = data
+  let item = {
+    province: {
+      name: data[0],
+      code: code[0]
+    },
+    city: {
+      name: data[1],
+      code: code[1]
+    },
+    area: {
+      name: data[2],
+      code: code[2]
+    },
+  };
+  region.value = data[0] + data[1] + data[2];
+  harbourForm.value.cbAreaVO = item;
+}
 
 
 </script>
@@ -335,7 +377,7 @@ function getList(isMore:boolean = false){
 }
 .popup{
   width: 100vw;
-  height: 50vh;
+  height: 60vh;
   padding: 16px;
   box-sizing: border-box;
   .popup-head{

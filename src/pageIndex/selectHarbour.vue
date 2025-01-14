@@ -143,12 +143,12 @@ function sure() {
   .list {
     width: 100%;
     height: calc(100% - 50px);
-    padding: 0 16px;
+    padding: 0;
     box-sizing: border-box;
     overflow-y: auto;
     margin-top: 10px;
     .item {
-      padding: 10px 16px;
+      padding: 10px 0;
       box-sizing: border-box;
       border-bottom: 1px solid $uni-border-color;
       display: flex;
@@ -156,6 +156,7 @@ function sure() {
       .check {
       }
       .item-info {
+        flex-grow: 1;
         margin-left: 10px;
         .head {
           display: flex;
@@ -180,6 +181,7 @@ function sure() {
           }
         }
         .info {
+          width: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;

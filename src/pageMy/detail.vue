@@ -200,6 +200,7 @@
 <script setup lang="ts">
 onLoad((val: any) => {
   formShipData.value = JSON.parse(val.item);
+  console.log('formShipData',formShipData.value)
   formShipData.value.shipType = formShipData.value.shipType+""
   formShipData.value.routeType = formShipData.value.routeType+""
   setTimeout(() => {
@@ -217,7 +218,8 @@ onLoad((val: any) => {
     )
 
     let regionText = JSON.parse(formShipData.value.region);
-    region.value = regionText.province + regionText.city + regionText.area;
+    console.log('regionText',regionText)
+    region.value = regionText.province.name + regionText.city.name + regionText.area.name;
     checkRegion.value = [regionText.province,regionText.city,regionText.area]
     routeType.value = routeTypeList.find(
       (element) => element.value == formShipData.value.routeType,
@@ -392,7 +394,7 @@ function changeRegion(e) {
     },
   };
   region.value = data[0] + data[1] + data[2];
-  formShipData.value.region = JSON.stringify(item);
+  formShipData.value.region = item;
 }
 
 //----------------------<hxlx-航线类型>----------------------

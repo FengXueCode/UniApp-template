@@ -249,7 +249,7 @@ function changeRegion(e) {
     },
   };
   region.value = data[0] + data[1] + data[2];
-  formShipData.value.region = JSON.stringify(item);
+  formShipData.value.region = item;
 }
 
 //----------------------<hxlx-航线类型>----------------------

@@ -24,7 +24,7 @@
                 {{ formData.cbShipId == "" ? "请选择船舶" : ship.shipName }}
               </div>
 
-              <up-icon name="arrow-right"></up-icon>
+              <up-icon name="arrow-right" v-if="formData.sailingHarbourAuditState !=0&&formData.sailingHarbourAuditState!=90 "></up-icon>
             </div>
 
             <up-picker @cancel="showShip = false" confirmColor="#07C160" :show="showShip" :columns="[shipList]"
@@ -46,7 +46,7 @@
               <div class="text">
                 {{ formData.harbourNo == "" ? "请选择港口" : harbour.desc }}
               </div>
-              <up-icon name="arrow-right"></up-icon>
+              <up-icon name="arrow-right" v-if="formData.sailingHarbourAuditState !=0&&formData.sailingHarbourAuditState!=90 "></up-icon>
             </div>
 
             <up-picker @cancel="showHarbour = false" confirmColor="#07C160" :show="showHarbour" :columns="[harhourList]"
@@ -61,7 +61,7 @@
                     : formData.plannedDate
                 }}
               </div>
-              <up-icon name="arrow-right"></up-icon>
+              <up-icon name="arrow-right" v-if="formData.sailingHarbourAuditState !=0&&formData.sailingHarbourAuditState!=90 "></up-icon>
             </div>
             <up-datetime-picker :show="showDate" :minDate="Date.now()" mode="datetime" v-model="formData.plannedDate"
               @cancel="showDate = false" @confirm="sureDate"></up-datetime-picker>
@@ -82,7 +82,7 @@
       <div class="user-list">
         <div class="title">
           <div class="text">船员管理</div>
-          <div class="btn" @click="addHarbour">
+          <div class="btn" @click="addHarbour" v-if="formData.sailingHarbourAuditState!=0&&formData.sailingHarbourAuditState!=90">
             <up-icon name="plus" color="white"></up-icon>
             <div class="text">新增船员</div>
           </div>
@@ -131,8 +131,8 @@ onLoad((val: any) => {
   }
   setTimeout(() => {
     if (val.isEdit) {
-      getMariner();
       initLocal();
+      getMariner();
     } else {
       if (inOut.value && uni.getStorageSync("out") != "") {
         formData.value = JSON.parse(uni.getStorageSync("out"));
