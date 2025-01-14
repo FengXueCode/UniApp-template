@@ -27,7 +27,7 @@
           </div>
           <div class="item-info">
             <img src="../static/icon/my/mmsi.svg" alt="" class="icon" />
-            <div class="text">MMSI：{{initNull(item.mmsi)}}</div>
+            <div class="text">物联卡号：{{initNull(item.mmsi)}}</div>
           </div>
         </div>
       </div>
