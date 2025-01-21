@@ -3,24 +3,14 @@
     <div class="title">我的</div>
     <div class="head">
       <img src="../static/icon/my/head.svg" alt="" class="head-img">
-      <div class="name">{{ user1.userName }}</div>
+      <div class="name">{{ user1.userName ===undefined?"未登录":user1.userName }}</div>
     </div>
     <up-cell-group>
 
       <up-cell v-for="(item,index) in navList" :key="index" :title="item.label" :icon="item.icon" isLink @click="navTo(item.url)" >
       </up-cell>
     </up-cell-group>
-<div class="nav-bottom">
-      <div class="item" @click="goIndex">
-        <img src="../static/icon/nav/send.svg" class="icon" alt="" />
-        <div class="label">进出港申报</div>
-      </div>
-
-      <div class="item" >
-        <img src="../static/icon/nav/my-active.svg" class="icon" alt="" />
-        <div class="label">我的</div>
-      </div>
-    </div>
+    <nav-bottom :checkNav="1" ></nav-bottom>
   </div>
 </template>
 <script setup lang="ts">
@@ -38,18 +28,13 @@ import mariner from "@/static/icon/my/mariner.svg"
 import harbour from "@/static/icon/my/harbour.svg"
 
 const navList = ref([
-  // {
-  //   label:"个人信息",
-  //   icon:user,
-  //   url:"/pageMy/user"
-  // },
   {
-    label:"绑定船舶",
+    label:"列表1",
     icon:mariner,
     url:"/pageMy/information"
   },  
   {
-    label:"船员管理",
+    label:"列表2",
     icon:harbour,
     url:"/pageMy/harbour"
   },

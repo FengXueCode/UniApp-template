@@ -8,8 +8,6 @@
 
 
 function request(url, data = {}, method = "POST", header = {}) {
-  console.log('请求路径：',import.meta.env.VITE_BASE_URL + url)
-  console.log('请求参数：',data)
   return new Promise((resolve, reject) => {
     uni.request({
       url: import.meta.env.VITE_BASE_URL + url,

@@ -1,6 +1,8 @@
 {
   "easycom": {
+    "autoscan":true,
     "custom": {
+      "uni-(.*)":"@/components/uni-$1.vue",
       "^u--(.*)": "uview-plus/components/u-$1/u-$1.vue",
       "^up-(.*)": "uview-plus/components/u-$1/u-$1.vue",
       "^u-([^-].*)": "uview-plus/components/u-$1/u-$1.vue"
@@ -8,7 +10,7 @@
   },
   "pages": [
     {
-      "path": "pages/index/index"
+      "path": "pages/index"
     }
   ],
   "subPackages": [
@@ -16,31 +18,16 @@
       "root": "pageIndex",
       "pages": [
         {
-          "path": "submit"
+          "path": "formTemplate"
         },
-        
         {
-          "path": "selectHarbour"
+          "path": "mapTemplate"
         }
       ]
     },
     {
       "root": "pageMy",
       "pages": [
-        {
-          "path": "information"
-        },
-        {
-          "path": "user"
-        },
-        {
-          "path": "detail"
-        },
-        {
-          "path": "harbour"
-        },{
-          "path": "add"
-        },
         {
           "path": "my",
           "style": {
@@ -59,14 +46,6 @@
           "path": "register"
         }
       ]
-    },
-    {
-      "root": "pageShip",
-      "pages": [
-        {
-          "path": "declare"
-        }
-      ]
     }
   ],
   "globalStyle": {
@@ -75,20 +54,5 @@
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
-  },
-  //"tabBar": {
-  //  "list": [
-  //   {
-  //    "pagePath": "pages/index/index",
-  //   "iconPath": "./static/icon/nav/send.png",
-  //  "selectedIconPath": "./static/icon/nav/send-active.png",
-  // "text": "进出港申报"
-  //},
-  //{
-  // "pagePath": "pages/my/my",
-  //"iconPath": "./static/icon/nav/my.png",
-  //"selectedIconPath": "./static/icon/nav/my-active.png",
-  //"text": "我的"
-  //}
-  //]
-  //}
+  }
+ 

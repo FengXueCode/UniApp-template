@@ -20,7 +20,6 @@ export default defineConfig({
   }),
   Components({
     dirs: [
-      "src/components",
       "src/pages"
     ],
     dts: "src/components.d.ts",

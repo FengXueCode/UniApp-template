@@ -446,7 +446,7 @@ function changeRegion(e) {
 }
 
 //----------------------<hxlx-航线类型>----------------------
-let routeTypeList = config.routeType;
+let routeTypeList =[];
 const routeType = ref({ label: "", value: "" });
 const showRouteType = ref(false);
 function sureRouteType(e) {
@@ -476,7 +476,7 @@ function sureHarbour(e) {
   formShipData.value.harbourName = harbour.value.desc;
 }
 //----------------------<cblx-船舶类型>----------------------
-let shipTypeList = config.shipType;
+let shipTypeList = [];
 const showShipType = ref(false);
 const shipType = ref({ label: "", value: "" });
 function sureShipType(e) {

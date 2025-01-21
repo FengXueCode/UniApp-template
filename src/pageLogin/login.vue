@@ -2,7 +2,7 @@
   <div class="main">
     <div class="title">
       <div>欢迎使用</div>
-      <div>船舶助手小程序！</div>
+      <div>****小程序！</div>
     </div>
     <div class="form">
       <up-form labelPosition="left" :model="user" :rules="rules" ref="form">

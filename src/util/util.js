@@ -1,4 +1,3 @@
-import { log } from "console";
 
 export function go(url) {
   uni.navigateTo({
