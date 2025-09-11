@@ -2,7 +2,7 @@
   <div class="main">
     <div class="title">我的</div>
     <div class="head">
-      <img src="../static/icon/my/head.svg" alt="" class="head-img">
+      <img src="../static/icon/my/user.svg" alt="" class="head-img">
       <div class="name">{{ user1.userName ===undefined?"未登录":user1.userName }}</div>
     </div>
     <up-cell-group>
@@ -23,41 +23,27 @@ function goIndex(){
 const user1 = uni.getStorageSync("user")
 
 //----------------------<gndh-功能导航>----------------------
-import user from "@/static/icon/my/user.svg"
-import mariner from "@/static/icon/my/mariner.svg"
-import harbour from "@/static/icon/my/harbour.svg"
 
 const navList = ref([
   {
     label:"列表1",
-    icon:mariner,
-    url:"/pageMy/information"
+    icon:'',
+    url:""
   },  
   {
     label:"列表2",
-    icon:harbour,
-    url:"/pageMy/harbour"
+    icon:'',
+    url:""
   },
 {
     label:"退出",
-    icon:harbour,
-    url:"/pageLogin/login"
+    icon:'',
+    url:""
   },
 ])
 
 function navTo(url:string){
-  if(url.includes('login')){
-    uni.showModal({
-      title:"确认退出？",
-      success(res){
-        if(res.confirm){
-          uni.clearStorageSync()
-          util.relaunch(url);
-        }
-      }
-    })
-    return
-  }
+  
   util.go(url)
 }
 </script>
